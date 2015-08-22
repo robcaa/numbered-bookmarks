@@ -1,5 +1,5 @@
 {
-    "name": "robertgirhiny.numberedBookmarks",
+    "name": "robertgirhiny.numbered-bookmarks",
     "title": "Numbered Bookmarks",
     "description": "Bookmark lines in the editor (CTRL+SHIFT+1 ... CTRL+SHIFT+9) as you work so you can quickly jump back to them later (CTRL+1 ... CTRL+9).",
     "homepage": "https://github.com/robcaa/numberedBookmarks",
