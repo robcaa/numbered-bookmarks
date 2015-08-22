@@ -12,6 +12,8 @@ robcaa@gmail.com
   - each file has own bookmarks
   - bookmarks auto save and load when brackets restarted
 
+### Screenshot
+  ![screenshot](/screenshot.jpg?raw=true)
 
 ### How to use
   - You can set bookmarks:		CTRL+SHIFT+1, CTRL+SHIFT+2, ... CTRL+SHIFT+9  
