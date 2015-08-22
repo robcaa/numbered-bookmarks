@@ -169,8 +169,6 @@ define(function (require, exports, module) {
             var cm = editor._codeMirror,
                 bmOne = bm[editor.document.file.fullPath];
 
-            console.log(bmOne);
-
             if (bmOne) {
                 for (var i=1; i<10; i++) {
                     if (bmOne[i] && bmOne[i].y < cm.doc.lineCount()) {
