@@ -53,6 +53,7 @@ define(function (require, exports, module) {
         CommandManager.register(menuName, commandId, handler);
         KeyBindingManager.addBinding(commandId, shortcut);
     }
+    addhotkey("bracketsEditorBookmarks.deleteallbookmark",     "delete all bookmark",       function() {deleteAllBookmark()},   "Ctrl-Shift-Delete");
     addhotkey("bracketsEditorBookmarks.setbookmark1",     "set #1",       function() {setBookmark(1)},   "Ctrl-Shift-1");
     addhotkey("bracketsEditorBookmarks.setbookmark2",     "set #2",       function() {setBookmark(2)},   "Ctrl-Shift-2");
     addhotkey("bracketsEditorBookmarks.setbookmark3",     "set #3",       function() {setBookmark(3)},   "Ctrl-Shift-3");
@@ -72,6 +73,32 @@ define(function (require, exports, module) {
     addhotkey("bracketsEditorBookmarks.bookmark8",        "#8",           function() {bookmark(8)},      "Ctrl-8");
     addhotkey("bracketsEditorBookmarks.bookmark9",        "#9",           function() {bookmark(9)},      "Ctrl-9");
 
+
+    /**
+    * Delete all bookmark in the current document
+    */
+    function deleteAllBookmark() {
+        var editor = EditorManager.getCurrentFullEditor();
+        if (editor) {
+            var cm = editor._codeMirror,
+                path = editor.document.file.fullPath,
+                y=0;
+
+            cm.eachLine(function(line){
+                if (line.wrapClass && line.wrapClass.indexOf("bookmark")>-1) {
+                    cm.removeLineClass(y, "wrap", "bookmark");
+                    for (var j=1; j<=9; j++) {
+                        cm.removeLineClass(y, "wrap", "bookmark-"+j);
+                    }
+                }
+                y++;
+            });
+            for (var i=1; i<10; i++) {
+                bm[path][i] = null;
+            }
+            prefs.set("bm", bm);
+        }
+    }
 
     /**
     * Set a bookmark
@@ -100,7 +127,7 @@ define(function (require, exports, module) {
             } else { //van bookmark abban a sorban
                 if (lineInfo.wrapClass.indexOf("bookmark-"+i) === -1) { //nem ugyanaz a bookmark tehát ez is egy hozzáadás
                     //az adott helyen lévő össes bookmarkot leszedjük
-                    for (var j=1; j<9; j++) {
+                    for (var j=1; j<=9; j++) {
                         if (lineInfo.wrapClass.indexOf("bookmark-"+j) !== -1) {
                             bm[path][j] = null;
                         }
