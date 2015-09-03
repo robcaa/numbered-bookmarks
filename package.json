@@ -3,7 +3,7 @@
     "title": "Numbered Bookmarks",
     "description": "Bookmark lines in the editor (CTRL+SHIFT+1 ... CTRL+SHIFT+9) as you work so you can quickly jump back to them later (CTRL+1 ... CTRL+9).",
     "homepage": "https://github.com/robcaa/numbered-bookmarks",
-    "version": "0.9.0",
+    "version": "0.9.1",
     "author": "Robert Girhiny robcaa@gmail.com (http://robertgirhiny.com)",
     "license": "MIT",
     "i18n": [

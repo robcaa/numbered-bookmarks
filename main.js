@@ -147,9 +147,30 @@ define(function (require, exports, module) {
         if (bm[path][i]==null) {
             return;
         }
-        editor.setCursorPos(bm[path][i].y, bm[path][i].x);
 
         var cm = editor._codeMirror;
+
+        //igazítás
+        var lineNumber=0;
+        var found = false;
+        cm.eachLine(function(line){
+            if (line.wrapClass && line.wrapClass.indexOf("bookmark-"+i)>-1) {
+                found = true;
+                if (lineNumber!=bm[path][i].y) {
+                    bm[path][i].y = lineNumber;
+                    prefs.set("bm", bm);
+                }
+                return false;
+            }
+            lineNumber++;
+        });
+        if (!found) {
+            bm[path][i] = null;
+            return;
+        }
+
+        editor.setCursorPos(bm[path][i].y, bm[path][i].x);
+
         center(cm, bm[path][i].y);
         cm.addLineClass(bm[path][i].y, "wrap", "bookmark-notify");
         setTimeout(function () {
@@ -178,22 +199,47 @@ define(function (require, exports, module) {
             }
         }
     }
+
+    /**
+     * Saves bookmarks to the data model for the specified editor instance
+     * @param {Editor=} editor - brackets editor instance. current editor if null
+     */
+    function saveBookmarks(editor) {
+        if (!editor) {
+            editor = EditorManager.getCurrentFullEditor();
+        }
+        if (editor) {
+            var cm = editor._codeMirror;
+            var lineNumber=0;
+            var found = [];
+            cm.eachLine(function(line){
+                if (line.wrapClass && line.wrapClass.indexOf("bookmark")>-1) {
+                    for (var i=1; i<10; i++) {
+                        if (line.wrapClass.indexOf("bookmark-"+i)) {
+                            found[i] = true;
+                            if (lineNumber!=bm[path][i].y) {
+                                bm[path][i].y = lineNumber;
+                            }
+                        }
+                    }
+                }
+                lineNumber++;
+            });
+
+            for (var i=1; i<10; i++) {
+                if (typeof found[i] === 'undefined') {
+                    bm[path][i] = null;
+                }
+            }
+            prefs.set("bm", bm);
+        }
+    }
+
     _.assign(bm, prefs.get("bm"));
 
     EditorManager.on("_fullEditorCreatedForDocument", function (e, document, editor) {
-        document.on("change.bookmarks", function () {
-            var cm = editor._codeMirror;
-            var bmOne = bm[editor.document.file.fullPath];
-
-            if (bmOne) { //igazítás
-                for (var i=1; i<10; i++) {
-                    var y=$('.bookmark-'+i+' .CodeMirror-linenumber').text()-1;
-                    if (bmOne[i] && y != bmOne[i].y) {
-                        bmOne[i].y = y;
-                        cm.addLineClass(bmOne[i].y, "wrap", "bookmark bookmark-"+i);
-                    }
-                }
-            }
+        editor.on("beforeDestroy.bookmarks", function () {
+            saveBookmarks(editor);
         });
         loadBookmarks(editor);
     });
