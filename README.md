@@ -11,15 +11,15 @@ robcaa@gmail.com
   - bookmarks save the cursor (x,y) positions, not only line numbers
   - each file has own bookmarks
   - bookmarks auto save and load when brackets restarted
-  - delete all bookmarks: CTRL+SHIFT+DELETE
+  - delete all bookmarks: CTRL+ALT+SHIFT+DELETE
 
 ### Screenshot
-  ![screenshot](/screenshot.jpg?raw=true)
+  ![screenshot](/screenshot2.jpg?raw=true)
 
 ### How to use
-  - You can set bookmarks:		CTRL+SHIFT+1, CTRL+SHIFT+2, ... CTRL+SHIFT+9  
+  - You can set bookmarks:		CTRL+ALT+SHIFT+1, CTRL+ALT+SHIFT+2, ... CTRL+ALT+SHIFT+9  
   - You can jump to a bookmark: CTRL+1, CTRL+2, ... CTRL+9  
-  - You can delete all bookmarks in the current document: CTRL+SHIFT+DELETE  
+  - You can delete all bookmarks in the current document: CTRL+ALT+SHIFT+DELETE  
   - ![howtouse](/howtouse.gif?raw=true)
 
 ### Version log
