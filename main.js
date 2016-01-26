@@ -58,17 +58,18 @@ define(function (require, exports, module) {
                 {key: shortcutMac, platform: "mac"},
             ]
         );
+        //KeyBindingManager.addBinding(commandId, shortcut);
     }
-    addhotkey("bracketsEditorBookmarks.deleteallbookmark",     "delete all bookmark",       function() {deleteAllBookmark()},   "Ctrl-Shift-Delete", "Cmd-ALT-Delete");
-    addhotkey("bracketsEditorBookmarks.setbookmark1",     "set #1",       function() {setBookmark(1)},   "Ctrl-Shift-1", "Cmd-ALT-1");
-    addhotkey("bracketsEditorBookmarks.setbookmark2",     "set #2",       function() {setBookmark(2)},   "Ctrl-Shift-2", "Cmd-ALT-2");
-    addhotkey("bracketsEditorBookmarks.setbookmark3",     "set #3",       function() {setBookmark(3)},   "Ctrl-Shift-3", "Cmd-ALT-3");
-    addhotkey("bracketsEditorBookmarks.setbookmark4",     "set #4",       function() {setBookmark(4)},   "Ctrl-Shift-4", "Cmd-ALT-4");
-    addhotkey("bracketsEditorBookmarks.setbookmark5",     "set #5",       function() {setBookmark(5)},   "Ctrl-Shift-5", "Cmd-ALT-5");
-    addhotkey("bracketsEditorBookmarks.setbookmark6",     "set #6",       function() {setBookmark(6)},   "Ctrl-Shift-6", "Cmd-ALT-6");
-    addhotkey("bracketsEditorBookmarks.setbookmark7",     "set #7",       function() {setBookmark(7)},   "Ctrl-Shift-7", "Cmd-ALT-7");
-    addhotkey("bracketsEditorBookmarks.setbookmark8",     "set #8",       function() {setBookmark(8)},   "Ctrl-Shift-8", "Cmd-ALT-8");
-    addhotkey("bracketsEditorBookmarks.setbookmark9",     "set #9",       function() {setBookmark(9)},   "Ctrl-Shift-9", "Cmd-ALT-9");
+    addhotkey("bracketsEditorBookmarks.deleteallbookmark",     "delete all bookmark",       function() {deleteAllBookmark()},   "Ctrl-Shift-Alt-Delete", "Cmd-ALT-Delete");
+    addhotkey("bracketsEditorBookmarks.setbookmark1",     "set #1",       function() {setBookmark(1)},   "Ctrl-Shift-Alt-1", "Cmd-SHIFT-ALT-1");
+    addhotkey("bracketsEditorBookmarks.setbookmark2",     "set #2",       function() {setBookmark(2)},   "Ctrl-Shift-Alt-2", "Cmd-SHIFT-ALT-2");
+    addhotkey("bracketsEditorBookmarks.setbookmark3",     "set #3",       function() {setBookmark(3)},   "Ctrl-Shift-Alt-3", "Cmd-SHIFT-ALT-3");
+    addhotkey("bracketsEditorBookmarks.setbookmark4",     "set #4",       function() {setBookmark(4)},   "Ctrl-Shift-Alt-4", "Cmd-SHIFT-ALT-4");
+    addhotkey("bracketsEditorBookmarks.setbookmark5",     "set #5",       function() {setBookmark(5)},   "Ctrl-Shift-Alt-5", "Cmd-SHIFT-ALT-5");
+    addhotkey("bracketsEditorBookmarks.setbookmark6",     "set #6",       function() {setBookmark(6)},   "Ctrl-Shift-Alt-6", "Cmd-SHIFT-ALT-6");
+    addhotkey("bracketsEditorBookmarks.setbookmark7",     "set #7",       function() {setBookmark(7)},   "Ctrl-Shift-Alt-7", "Cmd-SHIFT-ALT-7");
+    addhotkey("bracketsEditorBookmarks.setbookmark8",     "set #8",       function() {setBookmark(8)},   "Ctrl-Shift-Alt-8", "Cmd-SHIFT-ALT-8");
+    addhotkey("bracketsEditorBookmarks.setbookmark9",     "set #9",       function() {setBookmark(9)},   "Ctrl-Shift-Alt-9", "Cmd-SHIFT-ALT-9");
     addhotkey("bracketsEditorBookmarks.bookmark1",        "#1",           function() {bookmark(1)},      "Ctrl-1", "Cmd-1");
     addhotkey("bracketsEditorBookmarks.bookmark2",        "#2",           function() {bookmark(2)},      "Ctrl-2", "Cmd-2");
     addhotkey("bracketsEditorBookmarks.bookmark3",        "#3",           function() {bookmark(3)},      "Ctrl-3", "Cmd-3");
@@ -208,7 +209,7 @@ define(function (require, exports, module) {
         cm.addLineClass(bm[path][i].y, "wrap", "bookmark-notify");
         setTimeout(function () {
             cm.removeLineClass(bm[path][i].y, "wrap", "bookmark-notify");
-        }, 100);
+        }, 400);
     }
 
     /**

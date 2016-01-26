@@ -1,5 +1,5 @@
 # Brackets Numbered Bookmarks Extension
-[Robert Girhiny](http://robertgirhiny.com)  
+[Robert Girhiny website](http://robertgirhiny.com)  
 robcaa@gmail.com  
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= 
 
@@ -20,3 +20,11 @@ robcaa@gmail.com
   - You can set bookmarks:		CTRL+SHIFT+1, CTRL+SHIFT+2, ... CTRL+SHIFT+9  
   - You can jump to a bookmark: CTRL+1, CTRL+2, ... CTRL+9  
   - You can delete all bookmarks in the current document: CTRL+SHIFT+DELETE  
+  - ![howtouse](/howtouse.gif?raw=true)
+
+### Version log
+##### 0.9.3
+- folded and bookmarked line, now have a small white triangle to indicate folded line.
+- sexy transition when jump to a bookmark
+- Mac OSX shortcut bug fix [#2](https://github.com/robcaa/numbered-bookmarks/issues/2)
+- Keyboard shortcut conflict bug fix [#3](https://github.com/robcaa/numbered-bookmarks/issues/3)
