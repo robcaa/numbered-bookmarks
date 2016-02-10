@@ -33,6 +33,7 @@ define(function (require, exports, module) {
         KeyBindingManager           = brackets.getModule("command/KeyBindingManager"),
         ExtensionUtils              = brackets.getModule("utils/ExtensionUtils"),
         EditorManager               = brackets.getModule("editor/EditorManager"),
+        DocumentManager             = brackets.getModule('document/DocumentManager'),
         _                           = brackets.getModule("thirdparty/lodash");
 
 
@@ -79,6 +80,17 @@ define(function (require, exports, module) {
     addhotkey("bracketsEditorBookmarks.bookmark7",        "#7",           function() {bookmark(7)},      "Ctrl-7", "Cmd-7");
     addhotkey("bracketsEditorBookmarks.bookmark8",        "#8",           function() {bookmark(8)},      "Ctrl-8", "Cmd-8");
     addhotkey("bracketsEditorBookmarks.bookmark9",        "#9",           function() {bookmark(9)},      "Ctrl-9", "Cmd-9");
+
+
+
+    function onSave(event, doc) {
+        setTimeout(function() {
+            _.assign(bm, prefs.get("bm"));
+            var editor = EditorManager.getCurrentFullEditor();
+            loadBookmarks(editor);
+        }, 500);
+    }
+    DocumentManager['on']('documentSaved', onSave);
 
 
     /**
